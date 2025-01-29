@@ -18,19 +18,19 @@ class WebTinkerServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/web-tinker.php' => config_path('web-tinker.php'),
+                __DIR__ . '/../config/web-tinker.php' => config_path('web-tinker.php'),
             ], 'config');
 
             $this->publishes([
-                __DIR__.'/../resources/views' => base_path('resources/views/vendor/web-tinker'),
+                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/web-tinker'),
             ], 'views');
 
             $this->publishes([
-                __DIR__.'/../public' => public_path('vendor/web-tinker'),
+                __DIR__ . '/../public' => public_path('vendor/web-tinker'),
             ], 'web-tinker-assets');
         }
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'web-tinker');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'web-tinker');
 
         $this->app->bind(OutputModifier::class, config('web-tinker.output_modifier'));
 
@@ -43,7 +43,7 @@ class WebTinkerServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/web-tinker.php', 'web-tinker');
+        $this->mergeConfigFrom(__DIR__ . '/../config/web-tinker.php', 'web-tinker');
 
         $this->commands(InstallCommand::class);
     }
